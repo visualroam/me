@@ -1,0 +1,41 @@
+$green: #102027;
+$primary: #da291c;
+$secondary: #0087EF;
+$back: #fff;
+$thickness: 5px;
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  background-color:  $back;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.navigation {
+  background-color: $green;
+}
+
+.navigation-link {
+  color: white;
+  padding: 12px 23px;
+  border: $thickness solid transparent;
+
+  &:hover {
+    border-bottom: $thickness solid $secondary;
+    color: $secondary;
+    font-weight: bold;
+  }
+
+  &.active {
+    border-bottom: $thickness solid $primary;
+    color: $primary;
+    font-weight: bold;
+  }
+}

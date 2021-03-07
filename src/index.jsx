@@ -6,7 +6,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-
+import "./styles/main.scss"
+import App from "./components/app";
 
 
 let initialState = {
@@ -25,7 +26,7 @@ const store = createStore(rootReducer, initialState,
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <h1>TEST</h1>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
