@@ -18,7 +18,7 @@ module.exports = {
       ref  : 'origin/main',
       repo : 'git@github.com:visualroam/me.git',
       path : '/root/xd0m3',
-      'pre-deploy-local': 'npm run build && git add . && git commit -am "precompile" && gup && gp',
+      'pre-deploy-local': 'npm run build;git add .;git commit -am "precompile";gup;gp',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
     }
