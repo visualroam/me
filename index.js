@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/uploads',  express.static(__dirname + '/uploads'))
 app.use(express.static('error_pages'));
 app.use(express.static('dist'))
+app.use(express.static('build'))
 app.use("/assets",express.static(__dirname + '/assets'));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "/url-shortener/views"));
