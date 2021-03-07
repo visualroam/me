@@ -14,6 +14,9 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 #env
 .env
 
+#idea
+.idea
+
 # Runtime data
 pids
 *.pid
