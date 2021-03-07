@@ -1,0 +1,81 @@
+doctype html
+//if lt IE 7
+//if IE 7
+//if IE 8
+//if gt IE 8
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title
+  meta(name='description' content='')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(href='https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+  style.
+    body {
+    background-color: #102027;
+    height: 100vh;
+    }
+    .f-input {
+    border:0;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+    border-bottom: 3px solid white;
+    background-color: transparent;
+    max-width: 500px;
+    width: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
+    outline: none;
+    }
+    .f-input:focus {
+    border-color: #da291c;
+    }
+    .form {
+    max-width: 700px;
+    width: 100%;
+    }
+    .btn-xd0m3 {
+    color: white!important;
+    border: 2px solid #da291c;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 0;
+    background-color: transparent;
+    margin-left: 10px;
+    transition: 0.2s;
+    }
+    .btn-xd0m3:hover {
+    color: white;
+    border-color: white;
+    }
+
+    .url {
+        border:0;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-bottom: 3px solid #da291c;
+        background-color: transparent;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+  link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css' integrity='sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==' crossorigin='anonymous')
+//if lt IE 7
+  p.browsehappy
+    | You are using an 
+    strong outdated
+    |  browser. Please 
+    a(href='#') upgrade your browser
+    |  to improve your experience.
+body.d-flex.justify-content-center.align-items-center
+    - var url = `${shortUrl}`
+    input.url#url(value=url)
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js')    
+    script(src='https://code.jquery.com/jquery-3.5.1.js' integrity='sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=' crossorigin='anonymous')    
+    script(src='/assets/js/url.js')

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: #102027;
+                height: 100vh;
+            }
+
+            .f-input {
+                border:0;
+                color: white;
+                font-size: 20px;
+                text-align: center;
+                padding: 5px;
+                border-bottom: 3px solid white;
+                background-color: transparent;
+                max-width: 500px;
+                width: 100%;
+                font-family: 'Roboto Condensed', sans-serif;
+                outline: none;
+            }
+
+            .f-input:focus {
+                border-color: #da291c;
+            }
+
+            .form {
+                max-width: 700px;
+                width: 100%;
+            }
+
+            .btn-xd0m3 {
+                color: #da291c;
+                border: 2px solid #da291c;
+                font-weight: bold;
+                font-size: 15px;
+                padding: 5px;
+                border-radius: 0;
+                background-color: transparent;
+                margin-left: 10px;
+                transition: 0.2s;
+            }
+            .btn-xd0m3:hover {
+                color: white;
+                border-color: white;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    
+    </head>
+    <body class="d-flex justify-content-center align-items-center">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js" integrity="sha512-b/htz6gIyFi3dwSoZ0Uv3cuv3Ony7EeKkacgrcVg8CMzu90n777qveu0PBcbZUA7TzyENGtU+qZRuFAkfqgyoQ==" crossorigin="anonymous"></script>
+        <script>
+
+            class Vehicle {
+            constructor(x, y) {
+                this.pos = createVector(random(width), random(height));
+                this.target = createVector(x, y);
+                this.vel = p5.Vector.random2D();
+                this.acc = createVector();
+                this.r = 5;
+                this.maxspeed = 2;
+                this.maxforce = 1;
+            }
+
+            behaviors() {
+                var arrive = this.arrive(this.target);
+                var mouse = createVector(mouseX, mouseY);
+                var flee = this.flee(mouse);
+
+                arrive.mult(1);
+                flee.mult(20);
+
+                this.applyForce(arrive);
+                this.applyForce(flee);
+            }
+
+            applyForce(f) {
+                this.acc.add(f);
+            }
+
+            update() {
+                this.pos.add(this.vel);
+                this.vel.add(this.acc);
+                this.acc.mult(0);
+            }
+
+            show() {
+                stroke(255);
+                strokeWeight(this.r);
+                point(this.pos.x, this.pos.y);
+            }
+
+
+            arrive(target) {
+                var desired = p5.Vector.sub(target, this.pos);
+                var d = desired.mag();
+                var speed = this.maxspeed;
+                if (d < 100) {
+                speed = map(d, 0, 100, 0, this.maxspeed);
+                }
+                desired.setMag(speed);
+                var steer = p5.Vector.sub(desired, this.vel);
+                steer.limit(this.maxforce);
+                return steer;
+            }
+
+            flee(target) {
+                var desired = p5.Vector.sub(target, this.pos);
+                var d = desired.mag();
+                if (d < 50) {
+                desired.setMag(this.maxspeed);
+                desired.mult(-1);
+                var steer = p5.Vector.sub(desired, this.vel);
+                steer.limit(this.maxforce);
+                return steer;
+                } else {
+                return createVector(0, 0);
+                }
+            }
+            }
+
+            function setup() {
+                createCanvas(window.innerWidth, window.innerHeight);
+                background(16, 32, 39);
+            }
+                
+            let font;
+            let vehicles = [];
+
+            function preload() {
+                font = loadFont('assets/font.ttf');
+            }
+
+            function setup() {
+                createCanvas(window.innerWidth, window.innerHeight);
+                background(16, 32, 39);
+        
+
+                var points = font.textToPoints('410', window.innerWidth/100*10,  window.innerHeight/2 - 30 + (window.innerHeight/100*30)/2, window.innerHeight/100*30, {
+                    sampleFactor: 0.25
+                });
+
+                for (var i = 0; i < points.length; i++) {
+                    var pt = points[i];
+                    var vehicle = new Vehicle(pt.x, pt.y);
+                    vehicles.push(vehicle);
+                    // stroke(255);
+                    // strokeWeight(8);
+                    // point(pt.x, pt.y);
+                }
+            }
+
+            function draw() {
+                background(16, 32, 39);
+                for (var i = 0; i < vehicles.length; i++) {
+                    var v = vehicles[i];
+                    v.behaviors();
+                    v.update();
+                    v.show();
+                }
+            }
+        </script>
+    </body>
+</html>

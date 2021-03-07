@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: #102027;
+                height: 100vh;
+            }
+
+            .f-input {
+                border:0;
+                color: white;
+                font-size: 20px;
+                text-align: center;
+                padding: 5px;
+                border-bottom: 3px solid white;
+                background-color: transparent;
+                max-width: 500px;
+                width: 100%;
+                font-family: 'Roboto Condensed', sans-serif;
+                outline: none;
+            }
+
+            .f-input:focus {
+                border-color: #da291c;
+            }
+
+            .form {
+                max-width: 700px;
+                width: 100%;
+            }
+
+            .btn-xd0m3 {
+                color: #da291c;
+                border: 2px solid #da291c;
+                font-weight: bold;
+                font-size: 15px;
+                padding: 5px;
+                border-radius: 0;
+                background-color: transparent;
+                margin-left: 10px;
+                transition: 0.2s;
+            }
+            .btn-xd0m3:hover {
+                color: white;
+                border-color: white;
+            }
+
+                        /* The container */
+            .container-bla {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            margin-left: 10px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            }
+
+            /* Hide the browser's default checkbox */
+            .container-bla input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+            }
+
+            /* Create a custom checkbox */
+            .checkmark {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            height: 36px;
+            width: 36px;
+            border: 2px solid #da291c;
+            background-color:transparent;
+            }
+
+            /* On mouse-over, add a grey background color */
+            .container-bla:hover input ~ .checkmark {
+            background-color: transparent;
+            }
+
+            /* When the checkbox is checked, add a blue background */
+
+            /* Create the checkmark/indicator (hidden when not checked) */
+            .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            }
+
+            /* Show the checkmark when checked */
+            .container-bla input:checked ~ .checkmark:after {
+            display: block;
+            }
+
+            /* Style the checkmark/indicator */
+            .container-bla .checkmark:after {
+            left: 11px;
+            top: 5px;
+            width: 10px;
+            height: 20px;
+            border: solid #da291c;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    
+    </head>
+    <body class="d-flex justify-content-center align-items-center">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <form method="POST" action="/url/new" class="form">
+            <input type="text" id="longurl" name="longUrl" class="f-input"placeholder="Enter your URL here..."/>
+            <label class="container-bla">
+                <input type="checkbox" checked="checked" name="troll">
+                <span class="checkmark"></span>
+              </label>
+            <button type="submit" class="btn btn-xd0m3">Short URL</button>
+        </form>
+        <script src="" async defer></script>
+    </body>
+</html>
