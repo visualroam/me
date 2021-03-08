@@ -11,31 +11,51 @@ $fa-font-path: "~font-awesome/fonts";
 
 body {
   font-family: Roboto, Arial, sans-serif;
-  background-color:  $back;
 }
 
 * {
   box-sizing: border-box;
 }
 
-.navigation {
-  background-color: $green;
+
+.page-show {
+  background-color: $primary;
+  color: #FFFFFF;
+  padding: 20px 30px;
+  font-size: 30px;
 }
 
-.navigation-link {
-  color: white;
-  padding: 12px 23px;
-  border: $thickness solid transparent;
+.carousel-image {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
 
+.content {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.carousel-control-prev {
   &:hover {
-    border-bottom: $thickness solid $secondary;
-    color: $secondary;
-    font-weight: bold;
+    background-color: #1F1B4E33;
   }
+}
+.carousel-control-next {
+  &:hover {
+    .carousel-control-prev-icon {
+      color: #1F1B4E;
+    }
+    background-color: #1F1B4E33;
+  }
+}
 
-  &.active {
-    border-bottom: $thickness solid $primary;
-    color: $primary;
-    font-weight: bold;
+.carousel-indicators {
+  & li {
+    background-color: $primary;
   }
 }

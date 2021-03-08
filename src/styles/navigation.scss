@@ -1,0 +1,109 @@
+
+// === Variables =====
+$green: #102027;
+$primary: #da291c;
+$secondary: #0087EF;
+$back: #fff;
+$perspective:     60rem;
+$font-size:       4.25rem;
+$split-position:  50%;
+$split-thickness: 3px;
+$split-color: $primary;
+$thickness: 5px;
+
+.Menu {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #02001F, #1F1B4E);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+// === Menu <ul> =====
+.Menu-list {
+  font-size: $font-size;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// === Menu item =====
+.Menu-list-item {
+  position: relative;
+  color: transparent;
+  cursor: pointer;
+
+  // === Split Line =====
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: $split-position;
+    left: -10%;
+    right: -10%;
+    height: $split-thickness;
+    border-radius: $split-thickness;
+    margin-top: -($split-thickness / 2);
+    background: $split-color;
+    transform: scale(0);
+    transition: transform .8s cubic-bezier(.16,1.08,.38,.98);
+    z-index: 1;
+  }
+}
+
+// === Top/bottom mask =====
+.Mask {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  color: $split-color;
+  top: 0;
+  height: $split-position;
+  transition: all .8s cubic-bezier(.16,1.08,.38,.98);
+
+  span { display: block; }
+}
+
+// === Bottom mask specific =====
+.Mask + .Mask {
+  top: $split-position - 0.1;
+  height: 100 - $split-position + 0.1;
+
+  span { transform: translateY(-$split-position); }
+}
+
+// === Where the fun stuff happens =====
+.Menu-list-item:hover,
+.Menu-list-item:active {
+  .Mask { color: #FFF; transform: skewX(12deg) translateX(5px); }
+  .Mask + .Mask { transform: skewX(12deg) translateX(-5px); }
+  &::before { transform: scale(1); }
+}
+
+.navigation {
+  background: linear-gradient(45deg, #02001F, #1F1B4E);
+}
+
+#closeMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.navigation-head {
+  color: white;
+  padding: 12px 23px;
+  border: $thickness solid transparent;
+  font-weight: bold;
+  &:hover {
+    color: $primary;
+  }
+}
