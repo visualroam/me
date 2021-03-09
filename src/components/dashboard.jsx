@@ -1,9 +1,9 @@
 import React from 'react';
 import {hot} from 'react-hot-loader/root';
 
-import Show01 from '../assets/web_back_01.png'
-import Show02 from '../assets/web_back_02.png'
-import Show03 from '../assets/web_back_03.png'
+import Show01 from '../assets/header_01.png'
+import Show02 from '../assets/header_02.png'
+import Show03 from '../assets/header_03.png'
 import {Carousel} from "react-bootstrap";
 
 
@@ -18,8 +18,8 @@ const Dashboard = (props) => {
                         src={Show01}
                         alt="First slide"
                     />
-                    <div className="d-flex align-items-center justify-content-center content">
-                        <span className="page-show">Welcome to my Page</span>
+                    <div className="d-flex align-items-center justify-content-end content">
+                        <span className="page-show">Welcome</span>
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -28,6 +28,9 @@ const Dashboard = (props) => {
                         src={Show02}
                         alt="Second slide"
                     />
+                    <div className="d-flex align-items-center justify-content-end content">
+                        <span className="page-show">Projects</span>
+                    </div>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
@@ -35,6 +38,9 @@ const Dashboard = (props) => {
                         src={Show03}
                         alt="Third slide"
                     />
+                    <div className="d-flex align-items-center justify-content-end content">
+                        <span className="page-show">Streams</span>
+                    </div>
                 </Carousel.Item>
             </Carousel>
         </>

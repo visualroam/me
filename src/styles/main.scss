@@ -6,6 +6,7 @@ $thickness: 5px;
 $fa-font-path: "~font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
 
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import "~bootstrap/scss/bootstrap";
 
@@ -17,12 +18,89 @@ body {
   box-sizing: border-box;
 }
 
+#closeMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 .page-show {
-  background-color: $primary;
   color: #FFFFFF;
-  padding: 20px 30px;
-  font-size: 30px;
+  font-family: 'RocknRoll One', sans-serif;
+  margin-right: 11rem;
+  font-size: 3rem;
+  text-shadow: 0px 0px 24px rgba(0, 0, 0, 1),0px 0px 50px rgba(0, 0, 0, 1),0px 0px 30px rgba(0, 0, 0, 1),0px 0px 10px rgba(0, 0, 0, 1);
+}
+
+.login-form {
+  background: linear-gradient(45deg, #02001F, #1F1B4E);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+}
+
+.login-form-header {
+  color: white;
+  margin-bottom: 3px;
+  font-family: 'RocknRoll One', sans-serif;
+  padding-bottom: 10px;
+  border-bottom: 3px solid $primary;
+}
+
+.login-form-input {
+  border: 0;
+  color: #1F1B4E;
+  background-color: white;
+  padding: 5px 10px;
+  width: 100%;
+  text-align: center;
+
+
+  &:focus {
+    outline: none;
+    -webkit-box-shadow: 0px 3px 30px -9px rgba(255,255,255,0.46);
+    -moz-box-shadow: 0px 3px 30px -9px rgba(255,255,255,0.46);
+    box-shadow: 0px 3px 30px -9px rgba(255,255,255,0.46);
+  }
+}
+
+.btn-xd {
+  color: #1F1B4E;
+  background-color: #fff;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 3px solid transparent;
+  padding: 5px 40px;
+
+  &:hover{
+    background-color: transparent;
+    color: white;
+    border-bottom: 3px solid $primary;
+  }
+}
+
+.w-form-90 {
+  width: 90%;
+  max-width: 70%;
+}
+
+.login-form-close {
+  color: white;
+  padding: 12px 23px;
+  border: $thickness solid transparent;
+  font-weight: bold;
+  &:hover {
+    color: $primary;
+  }
+}
+
+.login-form-label{
+  color: white;
+  font-weight: bold;
 }
 
 .carousel-image {
@@ -30,6 +108,10 @@ body {
   top: 0;
   left: 0;
   z-index: -10;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 .content {
