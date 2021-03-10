@@ -18,7 +18,7 @@ module.exports = {
       ref  : 'origin/main',
       repo : 'git@github.com:visualroam/me.git',
       path : '/root/xd0m3',
-      "pre-deploy-local": `scp -C -P 80 .env root@64.225.104.243:/root/xd0m3`,
+      "pre-deploy-local": `scp -P 17532 -C .env root@64.225.104.243:/root/xd0m3`,
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
     }
