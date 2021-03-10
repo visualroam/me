@@ -58,28 +58,36 @@ body {
   width: 100%;
   text-align: center;
 
-
+  &.is-invalid {
+    border: 2px solid $primary;
+  }
   &:focus {
     outline: none;
     -webkit-box-shadow: 0px 3px 30px -9px rgba(255,255,255,0.46);
     -moz-box-shadow: 0px 3px 30px -9px rgba(255,255,255,0.46);
-    box-shadow: 0px 3px 30px -9px rgba(255,255,255,0.46);
+    box-shadow: 0px 3px 40px -9px rgba(255,255,255,0.46);
   }
 }
 
+.login-form-error {
+  color: $primary;
+  font-weight: bold;
+}
+
+#login-form {
+  max-width: 600px;
+}
+
 .btn-xd {
-  color: #1F1B4E;
-  background-color: #fff;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 3px solid transparent;
+  color: #FFFFFF;
+  background-color: transparent;
+  border: 0;
   padding: 5px 40px;
 
   &:hover{
-    background-color: transparent;
-    color: white;
-    border-bottom: 3px solid $primary;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    color: $primary;
   }
 }
 

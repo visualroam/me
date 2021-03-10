@@ -1,19 +1,67 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {hot} from 'react-hot-loader/root';
 import {useForm} from "react-hook-form";
+import axios from "axios";
 
 const Login = (props) => {
 
-    const {register, handleSubmit, watch, errors} = useForm();
-    const onSubmit = data => console.log(data);
+    const {register, handleSubmit, watch, errors, setError} = useForm();
+    const {loading, setLoading} = useState(false)
+
+    const onSubmit = data => {
+        console.log(data);
+        if(!data.email) {
+            setError("email", {
+                type: "required",
+                message: "Cant be empty"
+            });
+        }
+        if( !data.password){
+            setError("password", {
+                type: "required",
+                message: "Cant be empty"
+            });
+            return
+        }
+
+        axios.post('/login', {
+            email: data.email,
+            password: data.password
+        }).then(function (response) {
+           console.log(response);
+        }).catch(function (error) {
+            let res = error.response;
+            console.log(error.response);
+            if(res.status === 404) {
+                setError("email", {
+                    type: "not-found",
+                    message: "Email not found"
+                });
+            } else if(res.status === 403) {
+                setError("password", {
+                    type: "no-match",
+                    message: "Login Credentials doesnt match"
+                });
+            }
+        });
+    };
+
+    function formButton(loading) {
+        if (loading) {
+            return (<><i className="fa fa-spinner fa-spin"></i> Loading</>)
+        } else {
+            return (<>Login</>)
+        }
+    }
 
     return (
         <>
             <div className="container-fluid login-form">
                 <div className="row justify-content-center align-items-center h-100">
-                    <span className="login-form-close" id="closeMenu" style={{marginRight: "15px"}} onClick={props.toggleLoginForm}><i
+                    <span className="login-form-close" id="closeMenu" style={{marginRight: "15px"}}
+                          onClick={props.toggleLoginForm}><i
                         className="fa fa-times mr-2"></i>CLOSE</span>
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-md-6" id="login-form">
                         <div className="row justify-content-center">
                             <div className="col-12 col-md-8">
                                 <h1 className="login-form-header text-center">Login</h1>
@@ -30,9 +78,16 @@ const Login = (props) => {
                                     <div className="row justify-content-center">
                                         <div className="col-12 col-md-8">
                                             <input name="email" placeholder="max.mustermann@example.com"
-                                                   ref={register({required: true})} className="login-form-input"/>
+                                                   ref={register({})} className={"login-form-input " + (errors.email ? "is-invalid" : "")}/>
                                         </div>
                                     </div>
+                                    {errors.email &&
+                                        <div className="row justify-content-center mt-1">
+                                            <div className="col-12 col-md-8">
+                                                <span className="login-form-error"><i className="fa fa-exclamation-triangle mr-1"></i> {errors.email.message}</span>
+                                            </div>
+                                        </div>
+                                    }
                                     <div className="row mt-4 mb-1 justify-content-center">
                                         <div className="col-12 col-md-8">
                                             <span className="login-form-label">Passwort</span>
@@ -40,13 +95,22 @@ const Login = (props) => {
                                     </div>
                                     <div className="row justify-content-center">
                                         <div className="col-12 col-md-8">
-                                            <input name="password" type="password" ref={register({required: true})}
-                                                   className="login-form-input"/>
+                                            <input name="password" type="password" ref={register({})}
+                                                   className={"login-form-input " + (errors.password ? "is-invalid" : "")}/>
                                         </div>
                                     </div>
+                                    {errors.password &&
+                                    <div className="row justify-content-center mt-1">
+                                        <div className="col-12 col-md-8">
+                                            <span className="login-form-error"><i className="fa fa-exclamation-triangle mr-1"></i> {errors.password.message}</span>
+                                        </div>
+                                    </div>
+                                    }
                                     <div className="row mt-4">
                                         <div className="col-12 d-flex justify-content-center">
-                                            <input type="submit" className="btb btn-xd" value="Login"/>
+                                            <button type="submit" className="btb btn-xd">
+                                                {formButton(loading)}
+                                            </button>
                                         </div>
                                     </div>
                                 </form>

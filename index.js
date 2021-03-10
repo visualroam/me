@@ -9,18 +9,24 @@ const bodyParser = require('body-parser')
 require('dotenv').config();
 
 const connectDB = require("./url-shortener/mongoDb");
+
 let shortUrlRoute = require('./url-shortener/newShortUrl')
 let getShortUrlRoute = require('./url-shortener/shortUrl')
+let loginRoute = require('./login/login');
+
 var http = require('http').createServer(app)
 
 app.use(express.json({}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use('/uploads',  express.static(__dirname + '/uploads'))
+
 app.use(express.static('error_pages'));
 app.use(express.static('dist'))
 app.use(express.static('build'))
+
+app.use('/uploads',  express.static(__dirname + '/uploads'))
 app.use("/assets",express.static(__dirname + '/assets'));
+
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "/url-shortener/views"));
 app.use(cors());
@@ -29,7 +35,10 @@ connectDB();
 
 /* INSERT ALL URLS HERE */
 const router = express.Router()
+
 router.get
+
+router.post("/login", loginRoute)
 
 router.get("/", function (req,res) {
     res.sendFile(path.join(__dirname+'/dist/index.html'))
