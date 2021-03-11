@@ -3,6 +3,7 @@ module.exports = {
     name: "xd0m3",
     script: 'index.js',
     watch: true,
+    node_args : '-r /etc/deployment_xd0m3/.env'
     env: {
       "NODE_ENV": "development",
     },
@@ -18,7 +19,7 @@ module.exports = {
       ref  : 'origin/main',
       repo : 'git@github.com:visualroam/me.git',
       path : '/root/xd0m3',
-      "pre-deploy-local": `scp -P 17532 -C .env root@64.225.104.243:/root/xd0m3`,
+      "pre-deploy-local": `scp -P 17532 -C .env root@64.225.104.243:/etc/deployment_xd0m3/`,
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
     }
