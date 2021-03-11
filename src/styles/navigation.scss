@@ -68,7 +68,9 @@ $thickness: 5px;
   top: 0;
   height: $split-position;
   transition: all .8s cubic-bezier(.16,1.08,.38,.98);
-
+  &.active {
+    color: #FFFFFF!important;
+  }
   span { display: block; }
 }
 

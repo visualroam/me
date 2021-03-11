@@ -2,13 +2,20 @@ import React, {useState} from 'react';
 import {hot} from 'react-hot-loader/root';
 import {useForm} from "react-hook-form";
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import {setLoggedIn} from "../features/reducer"
+import {setUserSession} from "../features/common";
 
 const Login = (props) => {
 
     const {register, handleSubmit, watch, errors, setError} = useForm();
-    const {loading, setLoading} = useState(false)
+
+    const [loading, setLoading] = useState(false)
+
+    const dispatch = useDispatch()
 
     const onSubmit = data => {
+        setLoading(true);
         console.log(data);
         if(!data.email) {
             setError("email", {
@@ -21,17 +28,23 @@ const Login = (props) => {
                 type: "required",
                 message: "Cant be empty"
             });
-            return
         }
 
+        if(!data.email || !data.password) {
+            setLoading(false);
+            return
+        }
         axios.post('/login', {
             email: data.email,
             password: data.password
         }).then(function (response) {
-           console.log(response);
+           let token = response.data.payload;
+           setUserSession(token, response.data.user);
+           dispatch(setLoggedIn({loggedIn: true, token: token, user: response.data.user}))
+           props.toggleLoginForm()
         }).catch(function (error) {
             let res = error.response;
-            console.log(error.response);
+            console.log(error);
             if(res.status === 404) {
                 setError("email", {
                     type: "not-found",
@@ -43,6 +56,7 @@ const Login = (props) => {
                     message: "Login Credentials doesnt match"
                 });
             }
+            setLoading(false);
         });
     };
 

@@ -13,6 +13,7 @@ const connectDB = require("./url-shortener/mongoDb");
 let shortUrlRoute = require('./url-shortener/newShortUrl')
 let getShortUrlRoute = require('./url-shortener/shortUrl')
 let loginRoute = require('./login/login');
+let verifyToken = require("./login/verifyToken");
 
 var http = require('http').createServer(app)
 
@@ -39,6 +40,7 @@ const router = express.Router()
 router.get
 
 router.post("/login", loginRoute)
+router.get("/verifyToken", verifyToken)
 
 router.get("/", function (req,res) {
     res.sendFile(path.join(__dirname+'/dist/index.html'))

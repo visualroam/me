@@ -11,7 +11,10 @@ import App from "./components/app";
 
 
 let initialState = {
-    site: "home"
+    site: "home",
+    loggedIn: false,
+    user: "",
+    token: ""
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

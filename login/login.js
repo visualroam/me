@@ -13,7 +13,9 @@ loginRoute = async (req, res) => {
         await bcrypt.compare(password, user.password, function(err, match) {
             if(match) {
                 let token = jwt.sign({email: user.email, admin: user.admin, id: user._id}, process.env.JWT_SECRET, { expiresIn: '36000s' });
-                res.status(200).json({code: 200, message: "User found and password matched!", payload: token})
+                setTimeout(() => {
+                  res.status(200).json({code: 200, message: "User found and password matched!", payload: token, user: user})
+                },1000)
             } else {
                 res.status(403).json({code: 403, message: "Passwort doesnt match!"})
             }
