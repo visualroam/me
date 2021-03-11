@@ -3,7 +3,7 @@ module.exports = {
     name: "xd0m3",
     script: 'index.js',
     watch: true,
-    node_args : '-r /etc/deployment_xd0m3/.env',
+    node_args : '-r dotenv/config',
     env: {
       "NODE_ENV": "development",
     },
