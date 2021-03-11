@@ -97,6 +97,7 @@ app.use(function (req, res) {
 
 http.listen(8443, function(){
     console.log('listening on *:8443');
+    console.log(JSON.stringify(process.env))
   });
 
 function rnd(a1,a2) {
