@@ -3,8 +3,8 @@ import {hot} from 'react-hot-loader/root';
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {useDispatch} from "react-redux";
-import {setLoggedIn} from "../features/reducer"
-import {setUserSession} from "../features/common";
+import {setLoggedIn} from "../../features/reducer"
+import {setUserSession} from "../../features/common";
 
 const Login = (props) => {
 

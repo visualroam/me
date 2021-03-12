@@ -91,6 +91,10 @@ router.get("/s/:shortUrl", getShortUrlRoute);
 })*/
 app.use('', router)
 
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/dist/index.html'))
+});
+
 app.use(function (req, res) {
     res.sendFile(path.join(__dirname+'/error_pages/404.html'));
 })

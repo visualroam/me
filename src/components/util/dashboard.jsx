@@ -1,9 +1,9 @@
 import React from 'react';
 import {hot} from 'react-hot-loader/root';
 
-import Show01 from '../assets/header_01.png'
-import Show02 from '../assets/header_02.png'
-import Show03 from '../assets/header_03.png'
+import Show01 from '../../assets/header_01.png'
+import Show02 from '../../assets/header_02.png'
+import Show03 from '../../assets/header_03.png'
 import {Carousel} from "react-bootstrap";
 
 

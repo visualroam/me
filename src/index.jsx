@@ -5,10 +5,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-
+import { createBrowserHistory } from "history";
+import { Router } from "react-router";
 import "./styles/main.scss"
 import App from "./components/app";
 
+const history = createBrowserHistory();
 
 let initialState = {
     site: "home",
@@ -29,7 +31,9 @@ const store = createStore(rootReducer, initialState,
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+        <Router history={history}>
+            <App />
+        </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

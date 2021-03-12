@@ -12,6 +12,7 @@ $fa-font-path: "~font-awesome/fonts";
 
 body {
   font-family: Roboto, Arial, sans-serif;
+  background: #02001F;
 }
 
 * {
@@ -56,7 +57,6 @@ body {
   background-color: white;
   padding: 5px 10px;
   width: 100%;
-  text-align: center;
 
   &.is-invalid {
     border: 2px solid $primary;
@@ -156,6 +156,40 @@ body {
 
 $effect: hover 1s linear infinite;
 
+.no-match {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(45deg, #02001F, #1F1B4E);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  .no-match-text {
+    width: 70%;
+    text-align: center;
+
+    span.head {
+      display: inline-block;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 2px;
+      font-size: 5rem;
+      font-family: "Roboto", serif;
+      font-weight: 600;
+      color: $primary;
+      width: 100%;
+    }
+    span.text {
+      color: white;
+    }
+  }
+}
+
 .pre-loader {
   height: 100vh;
   width: 100vw;
@@ -166,6 +200,14 @@ $effect: hover 1s linear infinite;
   align-items: center;
 }
 
+.progress {
+  border-radius: 0;
+}
+
+.progress-bar {
+  background-color: $primary;
+}
+
 .pre-loader-text {
   width: 70%;
   text-align: center;
@@ -174,39 +216,107 @@ $effect: hover 1s linear infinite;
     display: inline-block;
     text-transform: uppercase;
     text-align: center;
-    margin: 5px;
+    margin: 2px;
     font-size: 2em;
     font-family: "Roboto", serif;
     font-weight: 600;
-    color: white;
+    color: $primary;
   }
 
-  span:nth-child(1) {
-    animation: $effect;
+}
+
+.header {
+  color: white;
+  text-align: center;
+
+  span.b {
+    border-bottom: 3px solid $primary;
+    padding: 10px 30px;
+  }
+}
+
+.label {
+  color: white;
+  font-weight: bold;
+}
+
+.check-box-container {
+
+  a {
+    color: $red;
+    text-decoration: underline;
   }
 
-  span:nth-child(2) {
-    animation: $effect .125s;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked {
+      ~ {
+        .checkmark {
+          border-color: $primary;
+
+          &:after {
+            display: block;
+          }
+        }
+      }
+    }
   }
 
-  span:nth-child(3) {
-    animation: $effect .25s;
+  &:hover {
+    input {
+      ~ {
+        .checkmark {
+          border-color: $red;
+        }
+      }
+    }
   }
 
-  span:nth-child(4) {
-    animation: $effect .375s;
+  .checkmark {
+    &:after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
   }
+}
 
-  span:nth-child(5) {
-    animation: $effect .5s;
-  }
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: 2px solid white;
 
-  span:nth-child(6) {
-    animation: $effect .675s;
-  }
-
-  span:nth-child(7) {
-    animation: $effect .75s;
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
   }
 }
 
@@ -234,7 +344,7 @@ $effect: hover 1s linear infinite;
 // lg -Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .pre-loader-text {
-    width:450px;
+    width: 450px;
 
     span {
       font-size: 4.5em;
@@ -244,24 +354,6 @@ $effect: hover 1s linear infinite;
 
 // xl - Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-
-}
-
-@keyframes hover {
-  0% {
-    transform: scale(1);
-    color: white;
-  }
-
-  20% {
-    transform: scale(1.5);
-    color: $primary;
-  }
-
-  50% {
-    transform: scale(1);
-    color: $secondary;
-  }
 
 }
 
